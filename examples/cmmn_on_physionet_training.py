@@ -1,5 +1,4 @@
 # load physionet from mne
-# %%
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -56,8 +55,6 @@ for raw in raws:
     X_all.append(data)
     y_all.append(event)
 
-# %%
-
 
 max_epochs = 100
 batch_size = 128
@@ -67,6 +64,9 @@ lr = 0.001
 
 results = []
 for subject_target in range(len(X_all)):
+    seed = 42
+    np.random.seed(seed)
+    torch.manual_seed(seed)
     subjects = np.arange(len(X_all))
     # remove subject_target from subjects
     subjects = subjects[subjects != subject_target]
@@ -95,7 +95,7 @@ for subject_target in range(len(X_all)):
         "balanced", classes=np.unique(y_train_concat), y=y_train_concat
     )
     module = SleepStagerChambon2018(
-        n_channels=n_channels,
+        n_chans=n_channels,
         sfreq=sfreq,
     )
     clf = NeuralNetClassifier(
@@ -145,7 +145,7 @@ for subject_target in range(len(X_all)):
         "balanced", classes=np.unique(y_train_concat), y=y_train_concat
     )
     module = SleepStagerChambon2018(
-        n_channels=n_channels,
+        n_chans=n_channels,
         sfreq=sfreq,
     )
     clf = NeuralNetClassifier(
@@ -201,3 +201,5 @@ sns.swarmplot(
 plt.title("BACC for LOPO on Physionet")
 plt.ylabel("")
 plt.xlabel("BACC")
+
+# fig.savefig("cmmn_on_physionet.png", bbox_inches="tight")

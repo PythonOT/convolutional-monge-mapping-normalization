@@ -13,9 +13,17 @@ setup(
     author_email='theo.gnassounou@inria.fr',
 
     # Choose your license
-    license='BSD 3-Clause',
+    license='MIT-License',
     # What does your project relate to?
     keywords='monge mapping optimal transport',
 
     packages=find_packages(),
+    install_requires=[
+        'mne',
+        'numpy',
+        'scipy',
+        'seaborn',
+        'matplotlib',
+        'scikit-learn',
+    ],
 )

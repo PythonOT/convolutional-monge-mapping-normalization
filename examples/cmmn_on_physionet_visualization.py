@@ -76,3 +76,4 @@ for i in range(4):
     set_axe(axs[i // 2, i % 2])
 
 plt.plot()
+# fig.savefig("cmmn_on_physionet_visualization.png", bbox_inches="tight")
