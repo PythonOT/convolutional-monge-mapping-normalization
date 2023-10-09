@@ -1,6 +1,6 @@
 # Convolutional Monge Mapping Normalization for learning on Sleep data
 
-This repository is the official implementation of Convolutional Monge Mapping Normalization for learning on Sleep data. This project propose a example of the method applied to Physionet data available on [MNE-python]{https://mne.tools/stable/index.html}.
+This repository is the official implementation of Convolutional Monge Mapping Normalization for learning on Sleep data. This project propose a example of the method applied to Physionet data available on [MNE-python](https://mne.tools/stable/index.html).
 
 ### Install package from source
 
@@ -17,7 +17,7 @@ pip install -e .
 
 ### Install pyTorch
 
-Follow the instructions from [pyTorch website]{https://pytorch.org/}.
+Follow the instructions from [pyTorch website](https://pytorch.org/).
 
 ### Install skorch
 
