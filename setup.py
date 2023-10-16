@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='cmm',
-    version='0',
+    version='0.1',
     description='Convolutional Monge Mapping Normalization',
 
     # The project's main homepage.
