@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='cmm',
+    name='cmmn',
     version='0.1',
     description='Convolutional Monge Mapping Normalization',
 
@@ -19,7 +19,6 @@ setup(
 
     packages=find_packages(),
     install_requires=[
-        'mne',
         'numpy',
         'scipy',
         'seaborn',

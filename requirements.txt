@@ -1,3 +1,4 @@
+mne
 pytorch
 skorch
 braindecode
