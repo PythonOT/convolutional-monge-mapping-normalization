@@ -4,7 +4,7 @@ import numpy as np
 
 
 def load_sleep_physionet(
-    raw_fname, annot_fname, load_eeg_only=True, crop_wake_mins=30
+    raw_fname, annot_fname, load_eeg_only=True,  # crop_wake_mins=30
 ):
     """Load a recording from the Sleep Physionet dataset.
 
@@ -39,16 +39,6 @@ def load_sleep_physionet(
     raw.set_annotations(annots, emit_warning=False)
     if not load_eeg_only:
         raw.set_channel_types(mapping)
-
-    if crop_wake_mins > 0:  # Cut start and end Wake periods
-        # Find first and last sleep stages
-        mask = [x[-1] in ["1", "2", "3", "4", "R"] for x in annots.description]
-        sleep_event_inds = np.where(mask)[0]
-
-        # Crop raw
-        tmin = annots[int(sleep_event_inds[0])]["onset"] - crop_wake_mins * 60
-        tmax = annots[int(sleep_event_inds[-1])]["onset"] + crop_wake_mins * 60
-        raw.crop(tmin=tmin, tmax=tmax)
 
     # Rename EEG channels
     ch_names = {i: i.replace("EEG ", "") for i in raw.ch_names if "EEG" in i}
@@ -115,3 +105,25 @@ def extract_epochs(raw, chunk_duration=30.0):
     )
 
     return epochs.get_data(), epochs.events[:, 2] - 1
+
+
+def preprocessing(data, scaler=None, to_microvolt=True):
+    if to_microvolt:
+        data *= 1e6
+    if scaler:
+        data = apply_scaler(data, method=scaler)
+    return data
+
+
+def apply_scaler(data, method="sample"):
+    if method == "sample":
+        data -= np.mean(data, axis=2, keepdims=True)
+        std = np.std(data, axis=2, keepdims=True)
+        std[std == 0] = 1
+        data /= std
+    elif method == "session":
+        data -= data.mean(axis=(0, 2), keepdims=True)
+        data /= data.std(axis=(0, 2), keepdims=True)
+    else:
+        raise ValueError("Unknown scaler method: %s" % method)
+    return data
