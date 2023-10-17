@@ -7,9 +7,9 @@ import scipy.signal
 import mne
 from mne.datasets.sleep_physionet.age import fetch_data
 
-from cmm.data import load_sleep_physionet, extract_epochs
-from cmm.cmmn import CMMN
-from cmm.utils import set_axe
+from cmmn.data import load_sleep_physionet, extract_epochs
+from cmmn import CMMN
+from cmmn.utils import set_axe
 
 mne.set_log_level("ERROR")
 

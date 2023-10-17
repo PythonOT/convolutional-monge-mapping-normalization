@@ -22,8 +22,8 @@ from braindecode.models import SleepStagerChambon2018
 import mne
 from mne.datasets.sleep_physionet.age import fetch_data
 
-from cmm.data import load_sleep_physionet, extract_epochs
-from cmm.cmmn import CMMN
+from cmmn.data import load_sleep_physionet, extract_epochs
+from cmmn import CMMN
 
 mne.set_log_level("ERROR")
 device = "cuda" if torch.cuda.is_available() else "cpu"
