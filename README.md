@@ -25,7 +25,7 @@ In a dedicated Python env, run:
 pip install -e .
 ```
 
-### To run the example of the paper
+### To run the example of the paper for physionet data
 
 ```bash
 python examples/physionet.py
