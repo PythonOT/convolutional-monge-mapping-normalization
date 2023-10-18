@@ -36,9 +36,3 @@ python examples/physionet.py
 ```bash
 python examples/cmmn_visualization.py
 ```
-
-### To run faster experiments
-
-```bash
-python examples/fast_example.py --fast
-```
