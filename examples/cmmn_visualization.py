@@ -75,5 +75,5 @@ for i in range(4):
     axs[i // 2, i % 2].set_title(f"Subject {i}")
     set_axe(axs[i // 2, i % 2])
 
-plt.plot()
+plt.show()
 # fig.savefig("cmmn_on_physionet_visualization.png", bbox_inches="tight")

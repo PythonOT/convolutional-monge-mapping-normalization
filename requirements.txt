@@ -1,4 +1,4 @@
 mne
-pytorch
+torch
 skorch
 braindecode
